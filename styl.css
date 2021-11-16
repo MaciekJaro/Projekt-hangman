@@ -1,0 +1,43 @@
+html{
+    background-color: rgb(185, 161, 131);
+}
+#txt{
+    padding-left: 50%;
+}
+#cos{
+    background-color: rgb(250, 209, 158);
+    border-radius: 10px;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+#pom{
+    height: 200px;
+    width: 300px;
+}
+#kk{
+    float: left;
+    font-size: larger;
+    
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-left: 10%;
+    margin-top: 10%;
+    background-color: rgb(250, 209, 158);
+    border:2px solid;
+    border-radius: 10px;
+}
+#xx{
+    border-radius: 10px;
+    background-color: rgb(250, 209, 158);
+    margin-left: 10%;
+    margin-top: 10%;
+}
+#txt{
+    font-size: 40px;
+}
+p{
+    margin-top: 1%;
+    margin-left: 45%;
+    font-size: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

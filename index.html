@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styl.css">
+    <script src="jquery-3.6.0.js"></script>
+   <script>
+       var koniec
+       var pomylka
+       var tab=[]
+       var haslo
+       function losa() {// funkcja pobiera hasła oraz losuje jedno z nich
+    
+    $(document).ready(function() {
+    $.ajax({
+    type: "GET",
+    url: "haslo.xml",
+    dataType: "xml",
+    success: function(xml) {
+       pomylka = 0
+       tab=[]
+       $('#pom').text('')
+       koniec = false
+       var los=((Math.random() * $(xml).find('na').length-1).toFixed(0))
+        console.log(los)
+       haslo=$($(xml).find('nazwa').eq(los)).text();
+       for(var i=0;i<haslo.length;i++){
+        tab[i]="_";
+    
+    }
+    $('#txt').text(tab)
+    console.log(haslo)
+    }
+    });
+    });
+    }
+    function zgaduj(){
+       if(koniec==false){
+        var wygrana=0
+        var dj=0
+        var jd=document.getElementById('cos').value
+        console.log(jd)
+        for(var i=0;i<haslo.length;i++){
+            if(haslo.charAt(i)==jd){
+                tab[i]=jd
+                dj=1 
+                
+                
+            }
+            
+            
+        }
+        for(var i=0;i<haslo.length;i++){
+            if(tab[i]==haslo.charAt(i)){
+                wygrana++
+            }
+            else{
+                wygrana--
+            }
+        }
+        if(wygrana==haslo.length){
+            $('#pom').text('Wygrałeś ')
+        }
+        if(dj==0){
+            pomylka++
+            $('#pom').text("Twoja ilosc pomylek to " + pomylka)
+        }
+        if(pomylka==5){
+            koniec=true
+            $('#pom').text("przegrałeś ")
+        }
+        if(pomylka==1){
+            document.getElementById('PNG').src='4.png'
+        }
+        else if(pomylka==2){
+            document.getElementById('PNG').src='3.png'
+        }
+        else if(pomylka==3){
+            document.getElementById('PNG').src='2.png'
+        }
+        else if(pomylka==4){
+            document.getElementById('PNG').src='1.png'
+        }
+        else{
+            document.getElementById('PNG').src='przegrales.png'
+        }
+        $('#txt').text(tab)
+       }
+       document.getElementById('cos').value=''
+       document.getElementById('cos').focus()
+    
+    }
+    
+   </script>
+
+    <title></title>
+</head>
+<body>
+    <p>Kategoria Narzędzia</p>
+   <div id="txt"></div> 
+   <button onclick="losa()" id="kk">Kliknij przycisk aby Wylosować hasło</button>
+   <input type="text" id="cos">
+   <button onclick="zgaduj()" id="xx">Enter</button>
+   
+   <div id="pom" style="margin-top: 10px; margin-left: 10%;"></div>
+   <img id="PNG" src="" style="margin-top: 10%; margin-left: 10%;">
+</body>
+</html>
